@@ -1,4 +1,4 @@
-#Letter-Inventory
+Letter-Inventory
 
 CS 145 
 
