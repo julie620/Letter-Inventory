@@ -1,3 +1,5 @@
-##Letter-Inventory
+#Letter-Inventory
 
-CS 145 LAB 3
+CS 145 
+
+LAB 3
