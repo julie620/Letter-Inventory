@@ -19,6 +19,13 @@ public class LetterInventory {
             letters[i] = 0;
         } // end of for loop
 
+
+        letterCounter(text, letters);
+        results(letters);
+        
+    } // end of main method
+
+    public static int[] letterCounter(String text, int[] letters) {
         for (int i = 0; i < text.length(); i++) {
             char letter = text.charAt(i);
             int number = (int)letter;
@@ -27,11 +34,18 @@ public class LetterInventory {
                 letters[index] += 1; // adds to letter count
             } // end of if statement
         } // end of for loop
+        return letters;
+    } // end of letterCounter method
 
+    public static void results(int[] letters) {
         for (int i = 65; i < 91; i++){
             int index = i - 65; // corresponds dec value of letter to index in letters[]
             char currentLetter = (char)i; // converts dec values of 65-90 to A-Z
-            System.out.println(currentLetter + ": " + letters[index]); // prints out results
+            System.out.print(currentLetter + ": " + letters[index] + "    "); // prints out results
+            if (index % 5 == 0 && index > 0) {
+                System.out.println();
+            }
         } // end of for loop
-    } // end of main method
+    } // end of results method
+
 } // end of LetterInventory class
