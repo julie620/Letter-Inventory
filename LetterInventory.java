@@ -8,9 +8,7 @@ public class LetterInventory {
        Scanner input = new Scanner(System.in);
 
         System.out.println("Please enter some text");
-        String text = input.nextLine();
-
-        text = text.toUpperCase();
+        String text = input.nextLine().toUpperCase();
 
         int[] letters = new int[26]; // initializes array that contains count of each letter
         
@@ -18,7 +16,6 @@ public class LetterInventory {
         for (int i = 0; i < 26; i++) {
             letters[i] = 0;
         } // end of for loop
-
 
         letterCounter(text, letters);
         results(letters);
