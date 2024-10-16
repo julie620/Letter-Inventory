@@ -1,4 +1,4 @@
-//Letter Inventory
+/*Letter Inventory
 
 import java.util.Scanner;
 
@@ -45,4 +45,4 @@ public class LetterInventory {
         } // end of for loop
     } // end of results method
 
-} // end of LetterInventory class
+} // end of LetterInventory class*/
