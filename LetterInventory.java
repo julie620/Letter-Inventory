@@ -1,48 +1,63 @@
-/*Letter Inventory
+// Lab 3: LetterInventory
+// Dylan Wilson, Juliana Serrano, Thuong Nguyen
 
 import java.util.Scanner;
 
 public class LetterInventory {
 
+    // main method
     public static void main(String[] args) {
-       Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create scanner object for input
 
-        System.out.println("Please enter some text");
-        String text = input.nextLine().toUpperCase();
+        System.out.println("Please enter some text"); // prompt
+        String text = input.nextLine().toUpperCase(); // store as a string and convert to uppercase
 
-        int[] letters = new int[26]; // initializes array that contains count of each letter
-        
-        //sets each count to 0 to start
-        for (int i = 0; i < 26; i++) {
-            letters[i] = 0;
-        } // end of for loop
+        int[] letterCounts = countLetters(text);  // call countLetters method and return to letterCounts array
 
-        letterCounter(text, letters);
-        results(letters);
-        
-    } // end of main method
+        printLetterCounts(letterCounts); // prints A-Z along with counts
 
-    public static int[] letterCounter(String text, int[] letters) {
-        for (int i = 0; i < text.length(); i++) {
-            char letter = text.charAt(i);
-            int number = (int)letter;
-            if (number > 64 && number < 91) { // uses Dec value to test if char is letter
-                int index = number - 65; // corresponds dec value of letter to index in letters[]
-                letters[index] += 1; // adds to letter count
-            } // end of if statement
-        } // end of for loop
-        return letters;
-    } // end of letterCounter method
+        System.out.println("Letters: " + letterInventory(letterCounts)); // print letters
 
-    public static void results(int[] letters) {
-        for (int i = 65; i < 91; i++){
-            int index = i - 65; // corresponds dec value of letter to index in letters[]
-            char currentLetter = (char)i; // converts dec values of 65-90 to A-Z
-            System.out.print(currentLetter + ": " + letters[index] + "    "); // prints out results
-            if (index % 5 == 0 && index > 0) {
-                System.out.println();
+        input.close();  // Close the scanner
+    } // end main method
+    
+    // countLetters method goes through the String text and counts the letters
+    public static int[] countLetters(String text) {
+        int[] letters = new int[26];  // Array to store counts of letters A-Z
+        for (int i = 0; i < text.length(); i++) { // continue through all characters of input text
+            char letter = text.charAt(i); // current letter is stored as char
+            int number = (int) letter; // current letter
+            if (number >= 65 && number <= 90) {  // Check if character is between 65 and 90 A=65 and Z=90
+                int index = number - 65;  // Convert the ASCII value to index A = 0, Z = 25
+                letters[index] += 1;  // add 1 to count
             }
-        } // end of for loop
-    } // end of results method
+        }
+        return letters; // return array letters with counts for all characters
+    } // end countLetters method
+    
+    // printLetterCounts method prints all the letters with the current counts
+    public static void printLetterCounts(int[] letters) {
+        for (int i = 65; i <= 90; i++) {  // Loop through ASCII values for 65 and 90 A=65 and Z=90
+            int index = i - 65;  // Convert the ASCII value to array index A=0 and Z=25
+            char currentLetter = (char) i;  // convert integer i to character
+            System.out.println(currentLetter + ": " + letters[index]);  // Print the current letter and its count
+        }
+    } // end printLetterCounts method
 
-} // end of LetterInventory class*/
+    // letterInventory method will take the letters array and output a string with the letter inventory
+    public static String letterInventory(int[] letters) {
+        StringBuilder result = new StringBuilder();
+
+            for (int i = 65; i <= 90; i++) { // Loop through letters 65 to 90 A=65 and Z=90
+            int index = i - 65;  // Convert ASCII value to array index
+            char currentLetter = (char) i;  // Convert ASCII value to character
+
+            // Append the current letter as many times as needed
+            for (int j = 0; j < letters[index]; j++) {
+                result.append(currentLetter); // convert the appended letters to a string
+            }
+        }
+        return result.toString();  // Return the formatted string
+    } // end letterInventory method
+    
+} // end public class
